@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage("Build") {
       steps {
-        sh 'mvn -v'
+	mvn clean package -DskipTests=true
       }
     }
 
@@ -16,7 +16,7 @@ pipeline {
         stage("Unit Tests") {
           agent { docker 'openjdk:7-jdk-alpine' }
           steps {
-            sh 'java -version'
+            sh 'mvn surefire:test'
           }
         }
         stage("Functional Tests") {
