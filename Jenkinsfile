@@ -5,14 +5,14 @@ pipeline {
         maven 'maven' 
     }
   stages {
-    stage("Build")
+    stage("Build"){
      agent { docker 'maven:latest' }
       {
       steps {
 	sh 'mvn clean package -DskipTests=true'
       }
     }
-
+    }
     stage("Testing") {
       parallel {
         stage("Unit Tests") {
