@@ -16,7 +16,7 @@ pipeline {
         stage("Unit Tests") {
           agent { docker 'openjdk:7-jdk-alpine' }
           steps {
-            sh 'mvn surefire:test -fae'
+            sh 'java -version'
           }
         }
         stage("Functional Tests") {
